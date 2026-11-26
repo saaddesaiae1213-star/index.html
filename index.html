@@ -709,4 +709,843 @@
     .table-scroll {
       width: 100%;
       overflow-x: auto;
-   
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      background: var(--canvas);
+    }
+
+    .data-table {
+      width: 100%;
+      min-width: 440px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .data-table th,
+    .data-table td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .data-table th {
+      color: var(--ink-mute);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--canvas-soft);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.num { text-align: right; font-weight: 400; color: var(--ink); }
+    .data-table th.num { text-align: right; }
+
+    a { color: var(--primary); }
+
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .muted { color: var(--ink-mute); }
+    .section-soft { background: var(--canvas-soft); }
+    .section-head {
+      max-width: 720px;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+    .section-head .pill-tag-soft { margin-bottom: 16px; }
+    .section-head p { margin-top: 14px; color: var(--ink-secondary); }
+
+    .hero-copy .pill-tag-soft {
+      background: rgba(255, 255, 255, 0.7);
+      margin-bottom: 20px;
+    }
+    .hero-copy .body-lg {
+      margin-top: 20px;
+      max-width: 540px;
+      color: var(--ink-secondary);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 36px;
+    }
+    .hero-stats strong {
+      display: block;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .hero-stats span { font-size: 13px; color: var(--ink-secondary); }
+
+    .console-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-mute);
+    }
+    .live-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #15be53;
+      box-shadow: 0 0 0 3px rgba(21, 190, 83, 0.18);
+    }
+    .console-log {
+      margin-top: 14px;
+      background: var(--brand-dark-900);
+      color: #dfe3ff;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 12.5px;
+      line-height: 1.75;
+      min-height: 232px;
+      overflow-x: auto;
+    }
+    .console-log .row { display: flex; gap: 12px; white-space: nowrap; }
+    .console-log .t { color: #8f93d9; flex-shrink: 0; }
+    .console-log .ok { color: #7ee2a8; }
+    .console-log .hl { color: #f9b4ff; }
+    .console-log .row {
+      opacity: 0;
+      transform: translateY(4px);
+      animation: logIn 0.35s ease forwards;
+    }
+    @keyframes logIn { to { opacity: 1; transform: none; } }
+    .console-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+      color: var(--ink-mute);
+    }
+
+    .service-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(83, 58, 253, 0.1);
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+    .card-feature h3 { margin-bottom: 10px; }
+    .card-feature p { color: var(--ink-secondary); }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--ink-secondary);
+    }
+    .feature-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .feature-list li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .step-num {
+      display: inline-block;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+
+    .calc-fields {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--ink-secondary);
+    }
+    .calc-result {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 300;
+      color: var(--primary);
+      margin: 6px 0 18px;
+    }
+
+    .area-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .area-chip {
+      padding: 7px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #e6e8ff;
+    }
+    .card-dark-shell p { color: #c9cdf5; }
+
+    .faq-list { display: grid; gap: 12px; max-width: 860px; }
+    .faq-item {
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      background: var(--canvas);
+      padding: 0 20px;
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      font-size: 16px;
+      font-weight: 400;
+      min-height: 44px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--primary);
+      transition: transform 0.2s ease;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { padding-bottom: 18px; color: var(--ink-secondary); }
+
+    .cta-band {
+      display: grid;
+      gap: 24px;
+      align-items: center;
+    }
+    @media (min-width: 860px) {
+      .cta-band { grid-template-columns: 1.4fr auto; }
+    }
+    .cta-band .hero-actions { margin-top: 0; }
+
+    .site-footer {
+      border-top: 1px solid var(--hairline);
+      padding: 36px 0 calc(36px + env(safe-area-inset-bottom, 0px));
+      font-size: 14px;
+      color: var(--ink-mute);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-inner a { color: var(--ink-secondary); text-decoration: none; }
+    .footer-inner a:hover { color: var(--primary); }
+
+    .drawer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .drawer-cta { margin-top: 24px; width: 100%; }
+
+    @media (max-width: 420px) {
+      .region-select { max-width: 96px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#top" class="brand-logo" aria-label="BlackPearlAI home">
+        <span class="brand-mark" aria-hidden="true">BP</span>
+        BlackPearlAI
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main">
+        <button class="nav-link" data-target="services">Services</button>
+        <button class="nav-link" data-target="process">How it works</button>
+        <button class="nav-link" data-target="calculator">Missed revenue</button>
+        <button class="nav-link" data-target="areas">Areas we serve</button>
+        <button class="nav-link" data-target="faq">FAQ</button>
+        <button class="nav-link" data-target="contact">Contact</button>
+      </nav>
+
+      <div class="header-actions">
+        <label for="region" class="sr-only">Region</label>
+        <select id="region" class="region-select">
+          <option value="IN">🇮🇳 India</option>
+          <option value="US">🇺🇸 US</option>
+          <option value="AU">🇦🇺 Australia</option>
+          <option value="NL">🇳🇱 Netherlands</option>
+        </select>
+        <button class="btn-primary-pill desktop-cta js-book">Book a call</button>
+        <button class="mobile-menu-btn" id="menu-open" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile menu" aria-hidden="true">
+    <div class="drawer-top">
+      <span class="brand-logo"><span class="brand-mark" aria-hidden="true">BP</span>BlackPearlAI</span>
+      <button class="mobile-menu-btn" id="menu-close" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+    <button class="drawer-link" data-target="services">Services <span aria-hidden="true">→</span></button>
+    <button class="drawer-link" data-target="process">How it works <span aria-hidden="true">→</span></button>
+    <button class="drawer-link" data-target="calculator">Missed revenue <span aria-hidden="true">→</span></button>
+    <button class="drawer-link" data-target="areas">Areas we serve <span aria-hidden="true">→</span></button>
+    <button class="drawer-link" data-target="faq">FAQ <span aria-hidden="true">→</span></button>
+    <button class="drawer-link" data-target="contact">Contact <span aria-hidden="true">→</span></button>
+    <button class="btn-primary-pill drawer-cta js-book">Book a 30-min call</button>
+  </aside>
+
+  <main id="main">
+    <section class="hero-mesh-wrapper" id="top">
+      <canvas id="mesh-canvas" aria-hidden="true"></canvas>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="pill-tag-soft">AI automation agency · <span id="hero-region">Kolhapur, India</span></span>
+          <h1 class="display-xxl">Best AI Automation Agency in Kolhapur for businesses that never want to miss a lead.</h1>
+          <p class="body-lg">BlackPearlAI builds revenue infrastructure: 24/7 AI voice agents, AI chatbots, Local SEO ranking systems and custom automation that answers, books and follows up while you run the business.</p>
+          <div class="hero-actions">
+            <button class="btn-primary-pill js-book">Book a 30-min strategy call <span aria-hidden="true">→</span></button>
+            <button class="btn-secondary-pill" data-target="services">Explore services</button>
+          </div>
+          <div class="hero-stats">
+            <div><strong class="tnum">24/7</strong><span>Calls &amp; chats answered</span></div>
+            <div><strong class="tnum">5–14</strong><span>Business days to launch</span></div>
+            <div><strong class="tnum">4</strong><span>Countries served</span></div>
+          </div>
+        </div>
+
+        <div class="card-dashboard" aria-label="Example automation console">
+          <div class="console-head">
+            <span class="micro-cap muted">Example workflow</span>
+            <span class="caption live-dot">Running</span>
+          </div>
+          <div class="tab-scroll-strip" role="tablist" aria-label="Automation type">
+            <button class="console-tab active" role="tab" aria-selected="true" data-flow="voice">AI Voice Agent</button>
+            <button class="console-tab" role="tab" aria-selected="false" data-flow="chat">AI Chatbot</button>
+            <button class="console-tab" role="tab" aria-selected="false" data-flow="seo">Local SEO</button>
+            <button class="console-tab" role="tab" aria-selected="false" data-flow="auto">Automation</button>
+          </div>
+          <div class="console-log font-mono-code" id="console-log" role="tabpanel" aria-live="polite"></div>
+          <div class="console-foot caption">
+            <span id="console-caption">Inbound call → booked appointment</span>
+            <span class="font-mono-code">blackpearl.ai</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-diagonal-cut"></div>
+    </section>
+
+    <section class="section-pad" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag-soft">Services</span>
+          <h2 class="display-xl">Four systems. One goal: more booked customers.</h2>
+          <p class="body-lg">Each system works on its own, and they work best together: get found on Google, answer every enquiry, and follow up automatically.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card-feature">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            </span>
+            <h3 class="heading-md">AI Voice Agent</h3>
+            <p class="body-md">A natural-sounding phone agent that answers every call, qualifies the caller and books straight into your calendar.</p>
+            <ul class="feature-list">
+              <li>English, Marathi, Hindi &amp; Dutch</li>
+              <li>CRM and calendar routing</li>
+              <li>Call summaries on WhatsApp or email</li>
+            </ul>
+          </article>
+          <article class="card-feature">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <h3 class="heading-md">AI Chatbot</h3>
+            <p class="body-md">A chatbot trained on your business for your website, WhatsApp and Instagram. It answers questions and captures leads instantly.</p>
+            <ul class="feature-list">
+              <li>Trained on your services &amp; prices</li>
+              <li>Lead capture and hand-off to your team</li>
+              <li>Live in 5–7 business days</li>
+            </ul>
+          </article>
+          <article class="card-feature">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h3 class="heading-md">Local SEO</h3>
+            <p class="body-md">Rank in the Google Map Pack when people nearby search for what you sell, from Rajarampuri to Rotterdam.</p>
+            <ul class="feature-list">
+              <li>Google Business Profile optimisation</li>
+              <li>Hyperlocal landing pages</li>
+              <li>Automated review requests</li>
+            </ul>
+          </article>
+          <article class="card-feature">
+            <span class="service-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+            </span>
+            <h3 class="heading-md">Custom Automation System</h3>
+            <p class="body-md">Connect your forms, CRM, sheets, invoices and messaging so repetitive work happens on its own.</p>
+            <ul class="feature-list">
+              <li>Lead follow-up sequences</li>
+              <li>Invoice &amp; reminder workflows</li>
+              <li>Reporting dashboards</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-soft" id="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag-soft">How it works</span>
+          <h2 class="display-xl">From first call to live system in days, not months.</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card-feature">
+            <span class="step-num font-mono-code">01 / Audit</span>
+            <h3 class="heading-md">30-minute strategy call</h3>
+            <p class="body-md">We look at where your enquiries come from, where they drop off and which automation gives you the fastest return.</p>
+          </article>
+          <article class="card-feature">
+            <span class="step-num font-mono-code">02 / Build</span>
+            <h3 class="heading-md">We build and integrate</h3>
+            <p class="body-md">Chatbots and Local SEO launch within 5–7 business days. Voice agents with CRM and calendar routing take 10–14 business days.</p>
+          </article>
+          <article class="card-feature">
+            <span class="step-num font-mono-code">03 / Grow</span>
+            <h3 class="heading-md">Launch and optimise</h3>
+            <p class="body-md">We monitor conversations, rankings and bookings, then tune scripts and workflows so results improve every month.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="calculator">
+      <div class="container grid-2">
+        <div class="card-cream">
+          <span class="micro-cap">Missed revenue estimator</span>
+          <h2 class="display-lg" style="margin-top:12px;">How much are unanswered enquiries costing you?</h2>
+          <p class="body-md" style="margin-top:12px;">Enter your own numbers. Everything is calculated in your browser and nothing is sent anywhere.</p>
+          <div class="calc-fields">
+            <div>
+              <label class="field-label" for="calc-missed">Missed calls or messages per week</label>
+              <input class="text-input tnum" id="calc-missed" type="number" min="0" step="1" value="15" inputmode="numeric" />
+            </div>
+            <div>
+              <label class="field-label" for="calc-rate">Share that would become customers (%)</label>
+              <input class="text-input tnum" id="calc-rate" type="number" min="0" max="100" step="1" value="20" inputmode="numeric" />
+            </div>
+            <div>
+              <label class="field-label" for="calc-value">Average customer value (<span id="calc-currency">₹</span>)</label>
+              <input class="text-input tnum" id="calc-value" type="number" min="0" step="1" value="5000" inputmode="numeric" />
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="micro-cap muted">Estimated revenue lost per month</span>
+          <div class="calc-result tnum" id="calc-month" aria-live="polite">—</div>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr><th>Period</th><th class="num">Lost customers</th><th class="num">Lost revenue</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Per week</td><td class="num tnum" id="c-w-n">—</td><td class="num tnum" id="c-w-v">—</td></tr>
+                <tr><td>Per month</td><td class="num tnum" id="c-m-n">—</td><td class="num tnum" id="c-m-v">—</td></tr>
+                <tr><td>Per year</td><td class="num tnum" id="c-y-n">—</td><td class="num tnum" id="c-y-v">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="caption muted" style="margin-top:14px;">This is an estimate based only on the numbers you enter. An AI voice agent and chatbot answer every enquiry, 24/7.</p>
+          <button class="btn-primary-pill js-book" style="margin-top:20px;">Recover this revenue <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-soft" id="areas">
+      <div class="container grid-2">
+        <div class="card-dark-shell">
+          <span class="micro-cap" style="color:#b9b9f9;">Local roots</span>
+          <h2 class="display-lg" style="margin-top:12px;">Kolhapur, Ichalkaranji &amp; Hatkanangale</h2>
+          <p class="body-md" style="margin-top:12px;">Looking for an AI automation agency near you? We work with clinics, real-estate firms, coaching institutes, showrooms, textile and manufacturing businesses across the Kolhapur district.</p>
+          <div class="area-chips">
+            <span class="area-chip">Rajarampuri</span>
+            <span class="area-chip">Shahupuri</span>
+            <span class="area-chip">Tarabai Park</span>
+            <span class="area-chip">Shiroli MIDC</span>
+            <span class="area-chip">Ichalkaranji</span>
+            <span class="area-chip">Hatkanangale</span>
+          </div>
+        </div>
+        <div class="card-feature">
+          <span class="micro-cap muted">Global delivery</span>
+          <h2 class="display-lg" style="margin-top:12px;">United States, Australia &amp; the Netherlands</h2>
+          <p class="body-md" style="margin-top:12px; color:var(--ink-secondary);">The same systems, localised for your market: native-sounding accents, local time zones and integrations with the tools your team already uses.</p>
+          <ul class="feature-list">
+            <li>US, UK, Australian &amp; Indian English voice agents</li>
+            <li>Dutch-language chat and voice for Netherlands clients</li>
+            <li>Calendar booking in your time zone</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill-tag-soft">FAQ</span>
+          <h2 class="display-xl">Questions, answered.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>How fast can BlackPearlAI deploy an AI Voice Agent or Chatbot?</summary>
+            <p class="body-md">Standard AI Chatbots and Local SEO engines launch within 5 to 7 business days. Custom AI Voice Agents with CRM and calendar routing deploy in 10 to 14 business days.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does the AI Voice Agent understand Marathi, Hindi, English, and Dutch?</summary>
+            <p class="body-md">Yes. Our voice infrastructure supports natural English (US, UK, Australian, Indian accents), Marathi-Hindi-English code-switching for Kolhapur and Maharashtra businesses, and Dutch for Netherlands clients.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do you improve Local SEO rankings in Kolhapur, Ichalkaranji, and Hatkanangale?</summary>
+            <p class="body-md">We combine Google Business Profile entity optimization, hyperlocal neighborhood landing pages, automated review velocity workflows, and LocalBusiness JSON-LD structured data to capture top-3 Map-Pack positions.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-soft" id="contact">
+      <div class="container">
+        <div class="card-dark-shell cta-band">
+          <div>
+            <span class="micro-cap" style="color:#b9b9f9;">Let's talk</span>
+            <h2 class="display-lg" style="margin-top:12px;">Book a free 30-minute strategy call.</h2>
+            <p class="body-md" style="margin-top:12px;">Tell us how your business gets customers today. We'll show you where automation will pay off first.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn-primary-pill js-book">Book on Calendly <span aria-hidden="true">→</span></button>
+            <a class="btn-on-dark" href="mailto:saad.ventures313@gmail.com">Email us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> BlackPearlAI · Kolhapur, Maharashtra, India</span>
+      <span>
+        <a href="mailto:saad.ventures313@gmail.com">saad.ventures313@gmail.com</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var CALENDLY_URL = 'https://calendly.com/saaddesai494/30min';
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Booking: Calendly popup, falling back to a new tab */
+    document.querySelectorAll('.js-book').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        closeDrawer();
+        if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+          window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+        } else {
+          window.open(CALENDLY_URL, '_blank', 'noopener');
+        }
+      });
+    });
+
+    /* Mobile drawer */
+    var drawer = document.getElementById('mobile-drawer');
+    var backdrop = document.getElementById('drawer-backdrop');
+    var openBtn = document.getElementById('menu-open');
+    function openDrawer() {
+      drawer.classList.add('open');
+      backdrop.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    openBtn.addEventListener('click', openDrawer);
+    document.getElementById('menu-close').addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+
+    /* Section navigation + active state */
+    document.querySelectorAll('[data-target]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var target = document.getElementById(el.getAttribute('data-target'));
+        closeDrawer();
+        if (target) target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+    var navItems = document.querySelectorAll('.nav-link, .drawer-link');
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var id = entry.target.id;
+          navItems.forEach(function (n) {
+            n.classList.toggle('active', n.getAttribute('data-target') === id);
+          });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      ['services', 'process', 'calculator', 'areas', 'faq', 'contact'].forEach(function (id) {
+        var s = document.getElementById(id);
+        if (s) spy.observe(s);
+      });
+    }
+
+    /* Example console */
+    var flows = {
+      voice: {
+        caption: 'Inbound call → booked appointment',
+        rows: [
+          ['09:42:03', 'Incoming call · +91 ••••• 4471'],
+          ['09:42:05', 'Language detected: <span class="hl">Marathi + Hindi</span>'],
+          ['09:42:31', 'Intent: book consultation'],
+          ['09:42:48', 'Calendar checked · 3 free slots'],
+          ['09:43:10', 'Slot confirmed: Sat 11:00'],
+          ['09:43:12', '<span class="ok">✓ CRM updated · WhatsApp confirmation sent</span>']
+        ]
+      },
+      chat: {
+        caption: 'Website chat → qualified lead',
+        rows: [
+          ['21:17:40', 'New chat on website · /pricing'],
+          ['21:17:41', 'Visitor: "Do you deliver to Ichalkaranji?"'],
+          ['21:17:42', 'Answer sent from knowledge base'],
+          ['21:18:05', 'Lead captured: name, phone, requirement'],
+          ['21:18:06', 'Lead score: <span class="hl">high</span>'],
+          ['21:18:07', '<span class="ok">✓ Sales team notified on WhatsApp</span>']
+        ]
+      },
+      seo: {
+        caption: 'Weekly Local SEO cycle',
+        rows: [
+          ['Mon 08:00', 'Google Business Profile audit'],
+          ['Mon 08:04', 'New post published · offer of the week'],
+          ['Tue 10:00', 'Review requests sent to 12 customers'],
+          ['Wed 10:00', 'Landing page refreshed: <span class="hl">Tarabai Park</span>'],
+          ['Thu 09:00', 'Structured data validated'],
+          ['Fri 18:00', '<span class="ok">✓ Ranking report delivered</span>']
+        ]
+      },
+      auto: {
+        caption: 'Order → invoice → follow-up',
+        rows: [
+          ['14:02:11', 'Form submitted · new order'],
+          ['14:02:12', 'Row added to Google Sheet'],
+          ['14:02:14', 'Invoice generated &amp; emailed'],
+          ['14:02:15', 'Payment reminder scheduled: +3 days'],
+          ['14:02:15', 'Feedback request scheduled: +7 days'],
+          ['14:02:16', '<span class="ok">✓ Owner dashboard updated</span>']
+        ]
+      }
+    };
+    var logEl = document.getElementById('console-log');
+    var capEl = document.getElementById('console-caption');
+    var tabs = document.querySelectorAll('.console-tab');
+    var order = ['voice', 'chat', 'seo', 'auto'];
+    var current = 'voice';
+    var cycleTimer = null;
+    function renderFlow(key) {
+      current = key;
+      var flow = flows[key];
+      capEl.textContent = flow.caption;
+      logEl.innerHTML = flow.rows.map(function (r, i) {
+        return '<div class="row" style="animation-delay:' + (reduceMotion ? 0 : i * 0.35) + 's"><span class="t">' + r[0] + '</span><span>' + r[1] + '</span></div>';
+      }).join('');
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-flow') === key;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+    function startCycle() {
+      if (reduceMotion) return;
+      clearInterval(cycleTimer);
+      cycleTimer = setInterval(function () {
+        renderFlow(order[(order.indexOf(current) + 1) % order.length]);
+      }, 6500);
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        renderFlow(t.getAttribute('data-flow'));
+        clearInterval(cycleTimer);
+      });
+    });
+    renderFlow('voice');
+    startCycle();
+
+    /* Region + missed revenue estimator */
+    var regions = {
+      IN: { label: 'Kolhapur, India', currency: 'INR', symbol: '₹', locale: 'en-IN', value: 5000 },
+      US: { label: 'United States', currency: 'USD', symbol: '$', locale: 'en-US', value: 400 },
+      AU: { label: 'Australia', currency: 'AUD', symbol: 'A$', locale: 'en-AU', value: 500 },
+      NL: { label: 'Netherlands', currency: 'EUR', symbol: '€', locale: 'nl-NL', value: 350 }
+    };
+    var regionSel = document.getElementById('region');
+    var missedEl = document.getElementById('calc-missed');
+    var rateEl = document.getElementById('calc-rate');
+    var valueEl = document.getElementById('calc-value');
+    var region = regions.IN;
+
+    function money(n) {
+      try {
+        return new Intl.NumberFormat(region.locale, { style: 'currency', currency: region.currency, maximumFractionDigits: 0 }).format(n);
+      } catch (e) {
+        return region.symbol + Math.round(n).toLocaleString();
+      }
+    }
+    function num(el) {
+      var v = parseFloat(el.value);
+      return isFinite(v) && v > 0 ? v : 0;
+    }
+    function calc() {
+      var weekly = num(missedEl) * Math.min(num(rateEl), 100) / 100;
+      var value = num(valueEl);
+      var periods = { w: 1, m: 52 / 12, y: 52 };
+      Object.keys(periods).forEach(function (k) {
+        var customers = weekly * periods[k];
+        document.getElementById('c-' + k + '-n').textContent = (Math.round(customers * 10) / 10).toLocaleString(region.locale);
+        document.getElementById('c-' + k + '-v').textContent = money(customers * value);
+      });
+      document.getElementById('calc-month').textContent = money(weekly * periods.m * value);
+    }
+    function setRegion(code) {
+      var userChangedValue = valueEl.value !== String(region.value);
+      region = regions[code] || regions.IN;
+      document.getElementById('hero-region').textContent = region.label;
+      document.getElementById('calc-currency').textContent = region.symbol;
+      if (!userChangedValue) valueEl.value = region.value;
+      try { localStorage.setItem('bp-region', code); } catch (e) {}
+      calc();
+    }
+    regionSel.addEventListener('change', function () { setRegion(regionSel.value); });
+    [missedEl, rateEl, valueEl].forEach(function (el) { el.addEventListener('input', calc); });
+    var saved = null;
+    try { saved = localStorage.getItem('bp-region'); } catch (e) {}
+    if (saved && regions[saved]) regionSel.value = saved;
+    setRegion(regionSel.value);
+
+    /* Hero mesh gradient */
+    var canvas = document.getElementById('mesh-canvas');
+    var ctx = canvas.getContext && canvas.getContext('2d');
+    if (ctx) {
+      var blobs = [
+        { c: '245,233,212', x: 0.15, y: 0.2, r: 0.55, sx: 0.00011, sy: 0.00008, p: 0 },
+        { c: '251,214,184', x: 0.4, y: 0.7, r: 0.5, sx: 0.00009, sy: 0.00012, p: 1.7 },
+        { c: '216,200,255', x: 0.65, y: 0.25, r: 0.55, sx: 0.0001, sy: 0.00007, p: 3.1 },
+        { c: '125,107,255', x: 0.85, y: 0.65, r: 0.5, sx: 0.00008, sy: 0.0001, p: 4.4 },
+        { c: '234,34,97', x: 1.0, y: 0.95, r: 0.4, sx: 0.00012, sy: 0.00009, p: 5.2 }
+      ];
+      var w = 0, h = 0, running = true;
+      function resize() {
+        var scale = 0.5;
+        w = canvas.width = Math.max(1, Math.floor(canvas.offsetWidth * scale));
+        h = canvas.height = Math.max(1, Math.floor(canvas.offsetHeight * scale));
+      }
+      function draw(t) {
+        ctx.clearRect(0, 0, w, h);
+        var size = Math.max(w, h);
+        blobs.forEach(function (b) {
+          var x = (b.x + Math.sin(t * b.sx + b.p) * 0.08) * w;
+          var y = (b.y + Math.cos(t * b.sy + b.p) * 0.1) * h;
+          var g = ctx.createRadialGradient(x, y, 0, x, y, b.r * size);
+          g.addColorStop(0, 'rgba(' + b.c + ',0.85)');
+          g.addColorStop(1, 'rgba(' + b.c + ',0)');
+          ctx.fillStyle = g;
+          ctx.fillRect(0, 0, w, h);
+        });
+      }
+      function loop(t) {
+        if (!running) return;
+        draw(t);
+        requestAnimationFrame(loop);
+      }
+      resize();
+      window.addEventListener('resize', function () { resize(); if (reduceMotion) draw(0); });
+      if (reduceMotion) {
+        draw(0);
+      } else {
+        requestAnimationFrame(loop);
+        document.addEventListener('visibilitychange', function () {
+          running = !document.hidden;
+          if (running) requestAnimationFrame(loop);
+        });
+      }
+    }
+  })();
+  </script>
+</body>
+</html>
